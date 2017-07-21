@@ -1,0 +1,18 @@
+{
+  "name": "mongo-times",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MEHDI KALANTARI",
+  "license": "M.K",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.11.3",
+    "request": "^2.81.0"
+  }
+}
