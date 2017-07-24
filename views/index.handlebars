@@ -1,0 +1,39 @@
+{{#each data}}
+
+    <div class="alert alert-info" role="alert">
+        <strong>{{this.title}}</strong> <a href='http://www.latimes.com{{this.link}}' target="_blank">Link to this article</a>
+        <br>
+        <div class="row">
+            
+            <form method="POST" action="/comments">
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <input type="hidden" name="tid" value={{this._id}}>
+                        <button type="submit" class="btn btn-info" type="button">Show Comments!</button>
+                    </div>
+                </div>
+
+            </form>
+            <br>
+        </div>
+    </div>
+
+    <form method="POST" action="/all">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" class="form-control" name="comment" placeholder="Comment...">
+                <input type="hidden" name="pId" value={{this._id}}>
+                <span class="input-group-btn">
+                <button type="submit" class="btn btn-secondary" type="button">Comment!</button>
+                </span>
+            </div>
+        </div>
+
+    </form>
+    <br>
+
+
+
+
+{{/each}}
+
