@@ -1,4 +1,3 @@
-
 var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
@@ -6,10 +5,10 @@ var Schema = mongoose.Schema;
 
 var CommentSchema = new Schema({
 
+    body: {
+        type: String
+    }
 
-  body: {
-    type: String
-  }
 });
 
 
