@@ -11,6 +11,7 @@ mongoose.Promise = Promise;
 
 // Initialize Express
 var app = express();
+var PORT = process.env.PORT || 3000;
 
 app.use(express.static("public"));
 
@@ -29,14 +30,19 @@ app.engine("handlebars", exphbs({
 app.set("view engine", "handlebars");
 
 // Database configuration
-var databaseUrl = "mongodb://heroku_15cwths1:j0305mb0nbelu6cnjer3vrevr2@ds115583.mlab.com:15583/heroku_15cwths1";
+mongoose.connect("mongodb://mehdi:mehdi@ds113835.mlab.com:13835/heroku_mjqvb3ql")
+var databaseUrl = "mongodb://mehdi:mehdi@ds113835.mlab.com:13835/heroku_mjqvb3ql";
 var collections = ["scrapedData"];
 
 var db = mongojs(databaseUrl, collections);
+
 db.on("error", function(error) {
     console.log("Database Error:", error);
 });
 
+db.once("open", function() {
+  console.log("Mongoose connection successful.");
+});
 // -----------------------------------------------------------------------------------------------
 request("http://www.latimes.com/", function(error, response, html) {
 
@@ -172,8 +178,7 @@ app.post("/comments", function(req, res) {
 
 
 // Listen on port 3000
-app.listen(3000, function() {
-    console.log("App running on port 3000!");
+app.listen(PORT, function() {
+    console.log("App listening on PORT: " + PORT);
 });
 
-mongoose.connect("mongodb://heroku_15cwths1:j0305mb0nbelu6cnjer3vrevr2@ds115583.mlab.com:15583/heroku_15cwths1")
